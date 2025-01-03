@@ -23,7 +23,7 @@ app.use("/api/v1/users", userRoutes);
     // agr kabhi purane users ko alg routes pr bhejna hai, to aise version ke hisaab se bhej skte, usually done in android apps
 
 const start = async () => {
-    const connectDB = await mongoose.connect("mongodb+srv://jcodestudy:4AifrqpWEknGLdPM@converge.as5x4.mongodb.net/video_conferencing_app?retryWrites=true&w=majority&appName=Converge");
+    const connectDB = await mongoose.connect(process.env.MONGO_URL);
     // console.log(connectDB.connection.name);
     console.log(`Mongo connected to host: ${connectDB.connection.host}`);
     server.listen(app.get("port"), () => {
