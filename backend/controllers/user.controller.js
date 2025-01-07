@@ -38,15 +38,18 @@ const login = async (req, res) => {
             return res.status(httpStatus.NOT_FOUND).json({message: "User Not Found"});
         }
 
-        if(bcrypt.compare(password, user.password)) {
+        let isPasswordCorrect = await bcrypt.compare(password, user.password); // if we directly write bcrypt.compare in if condition, it will always be true as it returns a promise, but when we use await it resolves the problem
+        if(isPasswordCorrect) {
             let token = crypto.randomBytes(20).toString("hex");
             user.token = token;
             // await User.updateOne({user});
             await user.save();
             return res.status(httpStatus.OK).json({token: token});
+        } else {
+            return res.status(httpStatus.UNAUTHORIZED).json({message: "Invalid Username or Password"});
         }
     } catch (e) {
-        return res.status(500).json({message: `Something wen wron ${e}`});
+        return res.status(500).json({message: `Something went wrong ${e}`});
     }
 }
 

@@ -35,10 +35,7 @@ export default function Authentication() {
     let handleAuth = async () => {
         try {
             if (formState === 0) {
-
-                let result = await handleLogin(username, password)
-
-
+                let result = await handleLogin(username, password);
             }
             if (formState === 1) {
                 let result = await handleRegister(name, username, password);
@@ -51,13 +48,11 @@ export default function Authentication() {
                 setPassword("")
             }
         } catch (err) {
-
             console.log(err);
             let message = (err.response.data.message);
             setError(message);
         }
     }
-
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -69,7 +64,7 @@ export default function Authentication() {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+                        backgroundImage: "url(https://images.unsplash.com/photo-1633113215883-a43e36bc6178?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHZpZGVvJTIwY2FsbHxlbnwwfHwwfHx8MA%3D%3D)",
                         backgroundRepeat: 'no-repeat',
                         backgroundColor: (t) =>
                             t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -157,7 +152,6 @@ export default function Authentication() {
             </Grid>
 
             <Snackbar
-
                 open={open}
                 autoHideDuration={4000}
                 message={message}
