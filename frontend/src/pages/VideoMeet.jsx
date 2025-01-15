@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import "../styles/videoComponent.css";
+import styles from "../styles/videoComponent.module.css";
 import { Badge, IconButton, TextField, Button } from '@mui/material';
 import io from "socket.io-client";
 
@@ -275,15 +275,23 @@ export default function VideoMeetComponent() {
                     <div>
                         <video ref={localVideoRef} autoPlay muted></video>
                     </div>
-                </div> : <>
-                    <video ref={localVideoRef} autoPlay muted></video>
+                </div> : <div className={styles.meetVideoContainer}>
+                    <video className={styles.meetUserVideo} ref={localVideoRef} autoPlay muted></video>
                     {videos.map((video) => {
                         <div key={video.socketId}>
                             <h2>{video.socketId}</h2>
+                            <video
+                                data-socket={video.socketId}
+                                ref={ref => {
+                                    if(ref && video.stream) {
+                                        ref.srcObject = video.stream;
+                                    }
+                                }}
+                                autoPlay
+                            ></video>
                         </div>
                     })}
-                </>
-        
+                </div>
             }
         </div>
     )
