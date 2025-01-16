@@ -34,7 +34,7 @@ export default function VideoMeetComponent() {
     let [screen, setScreen] = useState();
     let [screenAvailable, setScreenAvailable] = useState();
 
-    let [showModal, setShowModal] = useState();
+    let [showModal, setShowModal] = useState(true);
 
     let [messages, setMessages] = useState([]);
     let [message, setMessage] = useState("");
@@ -346,6 +346,9 @@ export default function VideoMeetComponent() {
         setScreen( !screen );
     }
 
+    let sendMessage = () => {
+        
+    }
     return (
         <div>
             {askForUsername == true ?
@@ -358,6 +361,18 @@ export default function VideoMeetComponent() {
                         <video ref={localVideoRef} autoPlay muted></video>
                     </div>
                 </div> : <div className={styles.meetVideoContainer}>
+
+                    {showModal ? 
+                        <div className={styles.charRoom}>
+                            <div className={styles.chatContainer}>
+                                <div className={styles.chattingArea}>
+                                <TextField id="outlined-basic" label="Enter your chat" variant="outlined" />
+                                <button variant="contained" onClick={sendMessage}>Send</button>
+                                </div>
+                            </div>
+                        </div> : <></>
+                    }
+                    
 
                     <div className={styles.buttonContainer}>
                         <IconButton style={{color: "white"}} onClick={handleVideo}>
@@ -375,7 +390,7 @@ export default function VideoMeetComponent() {
                             </IconButton> : <></>
                         }
                         <Badge badgeContent={newMessages} max={999} color="secondary">
-                            <IconButton style={{color: "white"}}>
+                            <IconButton style={{color: "white"}} onClick={() => setShowModal(!showModal)}>
                                 <ChatIcon/>
                             </IconButton>
                         </Badge>
