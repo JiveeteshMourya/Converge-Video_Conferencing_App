@@ -4,6 +4,7 @@ import LandingPage from "./pages/landing";
 import Authentication from './pages/authentication';
 import { AuthProvider } from './contexts/AuthContext';
 import VideoMeetComponent from './pages/VideoMeet';
+import HomeComponent from "./pages/home";
 
 function App() {
   return (<>
@@ -11,6 +12,7 @@ function App() {
       <AuthProvider>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
+        <Route path="/home" element={<HomeComponent/>}/>
         <Route path="/auth" element={<Authentication/>}/>
         <Route path="/:url" element={<VideoMeetComponent/>}/> // "/:url" will find slug
       </Routes>

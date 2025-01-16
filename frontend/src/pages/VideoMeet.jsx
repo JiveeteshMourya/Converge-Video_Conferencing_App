@@ -365,7 +365,7 @@ export default function VideoMeetComponent() {
         } catch(e) {
             console.log(e);
         }
-        window.location.href = "/";
+        window.location.href = "/home";
     }
 
     return (
