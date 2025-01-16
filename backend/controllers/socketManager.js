@@ -39,7 +39,7 @@ export const connectToSocket = (server) => {
             }
         });
 
-        socket.on("signal", (told, message) => {
+        socket.on("signal", (toId, message) => {
             io.to(toId).emit("signal", socket.id, message);
         });
 
