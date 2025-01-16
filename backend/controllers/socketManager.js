@@ -57,7 +57,7 @@ export const connectToSocket = (server) => {
                     messages[matchingRoom] = [];
                 }
                 messages[matchingRoom].push({'sender': sender, "data": data, "socket-id-sender": socket.id});
-                console.log("messages", Key, ":", sender, data);
+                console.log("messages", matchingRoom, ":", sender, data);
 
                 connections[matchingRoom].forEach((el) => {
                     io.to(el).emit("chat-message", data, sender, socket.id);

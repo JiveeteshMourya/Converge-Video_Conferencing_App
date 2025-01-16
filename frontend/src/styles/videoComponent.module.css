@@ -44,7 +44,7 @@
     background: white;
     border-radius: 10px;
     width: 30vw;
-    bottom: 10vh;
+    /* bottom: 10vh; */
     padding-inline: 20px;
 }
 .chatContainer {
@@ -54,4 +54,9 @@
 .chattingArea {
     position: absolute;
     bottom: 0;
+    padding: 0.5rem;
+}
+
+.chattingDisplay {
+    /* overflow: scroll; */
 }
