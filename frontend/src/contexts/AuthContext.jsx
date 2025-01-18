@@ -12,6 +12,7 @@ const client = axios.create({
 export const AuthProvider = ({children}) => {
     const authContext = useContext(AuthContext);
     const [userData, setUserData] = useState(authContext);
+    const router = useNavigate();
 
     const handleRegister = async(name, username, password) => {
         try{
@@ -42,10 +43,34 @@ export const AuthProvider = ({children}) => {
             throw err;
         }
     }
-    const router = useNavigate();
+
+    const getHistoryOfUser = async() => {
+        try{
+            let request = await client.get("/get_all_activity", {
+                params: {
+                    token: localStorage.getItem("token")
+                }
+            });
+            return request.data;
+        } catch (e) {
+            throw e;
+        }
+    }
+
+    const addToUserHistory = async(meetingCode) => {
+        try{
+            let request = await client.post("/add_to_activity", {
+                token: localStorage.getItem("token"),
+                meeting_code: meetingCode
+            });
+            return request;
+        } catch(e) {
+            throw e;
+        }
+    }
 
     const data = {
-        userData, setUserData, handleRegister, handleLogin,
+        userData, setUserData, handleRegister, handleLogin, addToUserHistory, getHistoryOfUser
     }
 
     return (
