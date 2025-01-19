@@ -74,7 +74,7 @@ const addToHistory = async (req, res) => {
             meetingCode: meeting_code
         })
         await newMeeting.save();
-        res.sendStatus(httpStatus.CREATED).json({message: "Added code to history"})
+        res.status(httpStatus.CREATED).json({message: "Added code to history"})
     } catch(e) {
         res.json({message: `Something went wrong ${e}`})
     }

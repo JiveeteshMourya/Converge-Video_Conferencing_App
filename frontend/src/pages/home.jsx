@@ -16,16 +16,17 @@ function HomeComponent() {
         navigate(`/${meetingCode}`)
     }
     return (<>
-        <div className="navbar">
+        <div className="navBar">
             <div style={{display: "flex", alignItems: "center"}}>
                 <h2>Converge</h2>
             </div>
             <div style={{display:"flex", alignItems: "center"}}>
-                <IconButton>
+                <IconButton onClick={() => {navigate("/history")}} id="history">
                     <RestoreIcon/>
                 </IconButton>
-                <p>History</p>
-                <Button onClick={() => {localStorage.removeItem("token"); navigate("/auth")}}>
+                <label for="history">History</label>
+                &nbsp;&nbsp;
+                <Button onClick={() => {localStorage.removeItem("token"); navigate("/")}}>
                     Logout
                 </Button>
             </div>
