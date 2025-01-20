@@ -16,7 +16,7 @@ function App() {
         <Route path="/home" element={<HomeComponent/>}/>
         <Route path="/auth" element={<Authentication/>}/>
         <Route path="/history" element={<History/>}/>
-        <Route path="/:url" element={<VideoMeetComponent/>}/> // "/:url" will find slug
+        <Route path="/:url" element={<VideoMeetComponent/>}/> { /* "/:url" will find slug */ }
       </Routes>
       </AuthProvider>
     </Router>

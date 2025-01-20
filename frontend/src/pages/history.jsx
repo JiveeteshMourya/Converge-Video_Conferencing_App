@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
@@ -22,7 +22,7 @@ export default function History() {
             }
         }
         fetchHistory();
-    }, [])
+    }, [getHistoryOfUser])
 
     let formatDate = (dateString) => {
         const date = new Date(dateString);

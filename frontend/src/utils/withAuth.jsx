@@ -15,7 +15,7 @@ const withAuth = (WrappedComponent) => {
             if(!isAuthenticated) {
                 router("/auth")
             }
-        }, [])
+        }, [router]);
 
         return <WrappedComponent {...props}/>
     }

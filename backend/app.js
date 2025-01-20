@@ -1,8 +1,5 @@
 import express from "express";
 import {createServer} from "node:http";
-
-import {Server} from "socket.io";
-
 import mongoose from "mongoose";
 import { connectToSocket } from "./controllers/socketManager.js";
 
@@ -13,7 +10,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 const server = createServer(app);
-const io = connectToSocket(server);
+connectToSocket(server);
 
 app.set("port", (process.env.PORT || 8000));
 app.use(cors());
