@@ -11,6 +11,7 @@ import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import ChatIcon from "@mui/icons-material/Chat";
 import server from "../environment";
+import useNavigate from "react-router-dom";
 
 const server_url = server;
 
@@ -47,6 +48,8 @@ export default function VideoMeetComponent() {
     const videoRef = useRef([]);
 
     let [videos, setVideos] = useState([]);
+
+    let router = useNavigate();
 
     // if(isChrome() == false) {
 
@@ -368,7 +371,8 @@ export default function VideoMeetComponent() {
         } catch(e) {
             console.log(e);
         }
-        window.location.href = "/home";
+        // window.location.href = "/home";
+        router('/home');
     }
 
     return (
